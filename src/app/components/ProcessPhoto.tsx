@@ -85,7 +85,7 @@ export const ProcessPhoto: React.FC<Props> = ({ activeIndex }) => {
     // Preload all images
     const imagePromises = photos.map((photo) => {
       return new Promise((resolve, reject) => {
-        const img = new Image();
+        const img = new window.Image();
         img.src = photo.src;
         img.onload = resolve;
         img.onerror = reject;
