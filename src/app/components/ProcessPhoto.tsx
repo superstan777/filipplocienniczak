@@ -11,46 +11,53 @@ interface Props {
 
 export const ProcessPhoto: React.FC<Props> = ({ activeIndex }) => {
   const photos: StaticImageData[] = [process1, process2, process3, process4];
+
   const [currentPhoto, setCurrentPhoto] = useState<StaticImageData>(photos[0]);
   const [previousPhoto, setPreviousPhoto] = useState<StaticImageData | null>(
     null
   );
   const [animate, setAnimate] = useState(false);
 
+  // ✅ Preload all images once
+  useEffect(() => {
+    photos.forEach((photo) => {
+      const img = new Image();
+      img.src = photo.src;
+    });
+  }, []);
+
+  // 🔄 Handle photo transitions
   useEffect(() => {
     if (photos[activeIndex] !== currentPhoto) {
       setPreviousPhoto(currentPhoto);
-      setCurrentPhoto(photos[activeIndex]);
       setAnimate(true);
 
-      // Lazy-load the next image only
-      const img = new Image();
-      img.src = photos[activeIndex].src;
+      setTimeout(() => {
+        setCurrentPhoto(photos[activeIndex]);
+      }, 0); // allow previous photo to render first
 
       setTimeout(() => {
         setAnimate(false);
         setPreviousPhoto(null);
-      }, 400); // Match your animation duration
+      }, 400); // match animation duration
     }
-  }, [activeIndex, currentPhoto, photos]);
+  }, [activeIndex]);
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative overflow-hidden">
       {previousPhoto && (
         <NextImage
           src={previousPhoto}
           alt="Previous"
+          loading="lazy"
           className="absolute top-0 left-0 w-full h-full object-cover"
-          priority={true}
-          loading="eager"
         />
       )}
       {currentPhoto && (
         <NextImage
           src={currentPhoto}
-          priority={true}
-          loading="eager"
           alt="Current"
+          loading="lazy"
           className={`absolute top-0 left-0 w-full h-full object-cover ${
             animate ? "animate-scale-up" : ""
           }`}
