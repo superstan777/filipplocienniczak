@@ -7,6 +7,24 @@ interface Props {
 }
 
 export const HeroContent: React.FC<Props> = ({ runAnimation }) => {
+  const renderExp = () => {
+    const startDate = new Date("2012-01-01"); // Set your actual start date here
+    const currentDate = new Date();
+
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+
+    const hasNotReachedAnniversaryThisYear =
+      currentDate.getMonth() < startDate.getMonth() ||
+      (currentDate.getMonth() === startDate.getMonth() &&
+        currentDate.getDate() < startDate.getDate());
+
+    if (hasNotReachedAnniversaryThisYear) {
+      years -= 1;
+    }
+
+    return `${years}+`;
+  };
+
   return (
     <div
       className={`lg:px-[2.5em] lg:grid lg:grid-cols-2 flex flex-col gap-y-[48px] w-full lg:items-center px-4 z-40 relative
@@ -55,7 +73,9 @@ export const HeroContent: React.FC<Props> = ({ runAnimation }) => {
                 </div>
               </a>
             </div>
-            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">12</h1>
+            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">
+              {renderExp()}
+            </h1>
           </div>
           <div className="text-slate">
             <div className="flex-col text-body hidden lg:block">
