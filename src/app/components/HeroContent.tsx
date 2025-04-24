@@ -111,7 +111,7 @@ export const HeroContent: React.FC<Props> = ({ runAnimation }) => {
                 </div>
               </a>
             </div>
-            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">60+</h1>
+            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">80+</h1>
           </div>
           <div className="text-slate">
             <div className="flex-col text-body hidden lg:block">
