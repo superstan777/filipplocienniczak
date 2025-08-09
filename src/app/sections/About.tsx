@@ -23,10 +23,9 @@ export const About = () => {
       <div className="gap-y-[56px] flex flex-col lg:hidden">
         <div className="gap-y-6 flex flex-col px-4  text-mh2">
           <p className="">
-            Od 2011 roku działam jako niezależny pośrednik finansowy i z
-            sukcesami obsługuję klientów z polecenia, od deweloperów i
-            pośredników nieruchomości. Aktualnie współpracuję z grupą Notus
-            Finanse.
+            Od 2011 roku działam jako pośrednik finansowy i z sukcesami
+            obsługuję klientów z polecenia, od deweloperów i pośredników
+            nieruchomości. Aktualnie współpracuję z grupą Notus Finanse.
           </p>
           <p className="">
             Jeśli szukasz finansowania nieruchomości lub planujesz budować dom -

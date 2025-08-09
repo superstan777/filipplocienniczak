@@ -64,8 +64,8 @@ export const WhatIDo = () => {
 
           <div className="text-mh2 lg:text-h2 lg:pl-10">
             Policzę zdolność kredytową, zweryfikuję prawnie kupowaną
-            nieruchomość, powiem jak się przygotować oraz jakie dokumenty
-            uszykować, przedstawię kilka najlepszych ofert i doradzę dla Ciebie
+            nieruchomość, powiem jak podejść do transakcji oraz jakie dokumenty
+            uszykować, przedstawię kilka najlepszych ofert i wybierzemy
             najkorzystniejszą.
           </div>
         </div>
