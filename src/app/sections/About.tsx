@@ -14,6 +14,9 @@ export const About = () => {
   const photoSpring = useSpring(imageY, physics); // apply easing to the negative scroll value
   const textSpring = useSpring(textY, physics); // apply easing to the negative scroll value
 
+  const copy1 =
+    "Od 2011 roku działam jako pośrednik finansowy i z sukcesami obsługuję klientów z polecenia, od deweloperów i pośredników nieruchomości. Aktualnie współpracuję z grupą Notus Finanse.";
+
   return (
     <div
       id="about"
@@ -22,11 +25,7 @@ export const About = () => {
     >
       <div className="gap-y-[56px] flex flex-col lg:hidden">
         <div className="gap-y-6 flex flex-col px-4  text-mh2">
-          <p className="">
-            Od 2011 roku działam jako pośrednik finansowy i z sukcesami
-            obsługuję klientów z polecenia, od deweloperów i pośredników
-            nieruchomości. Aktualnie współpracuję z grupą Notus Finanse.
-          </p>
+          <p className="">{copy1}</p>
           <p className="">
             Jeśli szukasz finansowania nieruchomości lub planujesz budować dom -
             jesteś w dobrym miejscu, pomogę Ci na każdym etapie. Wszystkie moje
@@ -49,12 +48,7 @@ export const About = () => {
             y: textSpring,
           }}
         >
-          <div className="col-span-1 row-span-1 pt-20 text-h2">
-            Od 2011 roku działam jako niezależny pośrednik finansowy i z
-            sukcesami obsługuję klientów z polecenia, od deweloperów i
-            pośredników nieruchomości. Aktualnie współpracuję z grupą Notus
-            Finanse.
-          </div>
+          <div className="col-span-1 row-span-1 pt-20 text-h2">{copy1}</div>
         </motion.div>
 
         <div className=" col-span-1 row-span-1"></div>
