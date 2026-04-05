@@ -11,51 +11,30 @@ interface Props {
 
 export const ProcessPhoto: React.FC<Props> = ({ activeIndex }) => {
   const photos: StaticImageData[] = [process1, process2, process3, process4];
-  const [currentPhoto, setCurrentPhoto] = useState<StaticImageData>(photos[0]);
-  const [previousPhoto, setPreviousPhoto] = useState<StaticImageData | null>(
-    null
-  );
-  const [animate, setAnimate] = useState(false);
+  const [animatingIndex, setAnimatingIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (photos[activeIndex] !== currentPhoto) {
-      setPreviousPhoto(currentPhoto);
-      setCurrentPhoto(photos[activeIndex]);
-      setAnimate(true);
-
-      // Lazy-load the next image only
-      const img = new Image();
-      img.src = photos[activeIndex].src;
-
-      setTimeout(() => {
-        setAnimate(false);
-        setPreviousPhoto(null);
-      }, 400); // Match your animation duration
-    }
-  }, [activeIndex, currentPhoto, photos]);
+    setAnimatingIndex(activeIndex);
+    const timer = setTimeout(() => setAnimatingIndex(null), 400);
+    return () => clearTimeout(timer);
+  }, [activeIndex]);
 
   return (
     <div className="w-full h-full relative">
-      {previousPhoto && (
+      {photos.map((photo, i) => (
         <NextImage
-          src={previousPhoto}
-          alt="Previous"
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          key={i}
+          src={photo}
+          alt={`Process step ${i + 1}`}
           priority={true}
           loading="eager"
-        />
-      )}
-      {currentPhoto && (
-        <NextImage
-          src={currentPhoto}
-          priority={true}
-          loading="eager"
-          alt="Current"
           className={`absolute top-0 left-0 w-full h-full object-cover ${
-            animate ? "animate-scale-up" : ""
+            i === activeIndex
+              ? `opacity-100 z-10 ${animatingIndex === i ? "animate-scale-up" : ""}`
+              : "opacity-0 z-0"
           }`}
         />
-      )}
+      ))}
     </div>
   );
 };
