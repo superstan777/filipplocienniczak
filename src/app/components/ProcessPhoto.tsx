@@ -12,10 +12,15 @@ interface Props {
 export const ProcessPhoto: React.FC<Props> = ({ activeIndex }) => {
   const photos: StaticImageData[] = [process1, process2, process3, process4];
   const [animatingIndex, setAnimatingIndex] = useState<number | null>(null);
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    setPreviousIndex((prev) => (prev !== activeIndex ? prev : null));
     setAnimatingIndex(activeIndex);
-    const timer = setTimeout(() => setAnimatingIndex(null), 400);
+    const timer = setTimeout(() => {
+      setAnimatingIndex(null);
+      setPreviousIndex(null);
+    }, 400);
     return () => clearTimeout(timer);
   }, [activeIndex]);
 
@@ -28,10 +33,12 @@ export const ProcessPhoto: React.FC<Props> = ({ activeIndex }) => {
           alt={`Process step ${i + 1}`}
           priority={true}
           loading="eager"
-          className={`absolute top-0 left-0 w-full h-full object-cover ${
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity ${
             i === activeIndex
               ? `opacity-100 z-10 ${animatingIndex === i ? "animate-scale-up" : ""}`
-              : "opacity-0 z-0"
+              : i === previousIndex
+                ? "opacity-100 z-0"
+                : "opacity-0 z-0"
           }`}
         />
       ))}
