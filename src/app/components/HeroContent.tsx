@@ -79,11 +79,11 @@ export const HeroContent: React.FC<Props> = ({ runAnimation }) => {
           </div>
           <div className="text-slate">
             <div className="flex-col text-body hidden lg:block">
-              <div>lat doświadczenia</div>
+              <div>Lat doświadczenia</div>
               <div>kredytowego</div>
             </div>
             <div className="text-mbody lg:hidden">
-              lat doświadczenia kredytowego
+              Lat doświadczenia kredytowego
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export const HeroContent: React.FC<Props> = ({ runAnimation }) => {
                 </div>
               </a>
             </div>
-            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">80+</h1>
+            <h1 className="text-mh1 lg:text-h1 pr-4 leading-70">100+</h1>
           </div>
           <div className="text-slate">
             <div className="flex-col text-body hidden lg:block">

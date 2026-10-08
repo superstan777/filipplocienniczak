@@ -51,9 +51,9 @@ export const Footer = () => {
             </div>
           </div>
           <div className="text-white/[0.3] text-footer mt-[10em] hidden lg:block">
-            {`© 2024 Filip Płócienniczak. Wszystkie prawa zastrzeżone. Site by `}
+            {`© 2024 Filip Płócienniczak. Wszystkie prawa zastrzeżone. Made by `}
             <span>
-              <a target="_blank" href="https://dribbble.com/msz">
+              <a target="_blank" href="https://www.instagram.com/msz.digital">
                 msz
               </a>
             </span>
@@ -232,9 +232,9 @@ export const Footer = () => {
             </div>
           </div>
           <div className="text-white/[0.3] text-[12px] mt-[87px] text-center lg:text-left lg:hidden mb-10">
-            {`© 2024 Filip Płócienniczak. Wszystkie prawa zastrzeżone. Site by `}
+            {`© 2024 Filip Płócienniczak. Wszystkie prawa zastrzeżone. Made by `}
 
-            <a target="_blank" href="https://dribbble.com/msz">
+            <a target="_blank" href="https://www.instagram.com/msz.digital">
               msz
             </a>
           </div>
